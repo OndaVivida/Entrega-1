@@ -105,7 +105,7 @@ const radicar = function(){
         cancelado()
         return
     }
-
+    
     switch (true){
         case numeros[0] == 0:
             cancelado("El índice de la raiz no puede ser 0")
@@ -119,8 +119,12 @@ const radicar = function(){
             salida(numeros, ((-1 * numeros[1]) ** (1/numeros[0])) + "i", "√")
             break
 
+        case esNegativo(numeros[1]) && !esPar(numeros[0]):
+            salida(numeros, -1 * (-1 * numeros[1]) ** (1/numeros[0]), "√")
+            break
+
         default:
-            salida(numeros, numeros[1] ** (1/numeros[0]), "√")
+            salida(numeros, (numeros[1]) ** (1/numeros[0]), "√")
             break
     }
     return
