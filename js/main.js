@@ -111,30 +111,6 @@ const dividir = function(){
     return
 }
 
-// const radicar = function(){
-//     let numeros = entrada(["Ingrese el índice", "Ingrese el radicando"])
-//     if (numeros === false){
-//         cancelado()
-//         return
-//     }
-//     if (numeros[0] == 0){
-//         cancelado("El índice de la raiz no puede ser 0")
-//         return
-//     }
-//     if ((numeros[1] < 0) && !(numeros[0] % 2)){
-//         console.log("imaginario")
-//         numeros[1] = numeros[1] * -1
-//         let raiz = numeros[1] ** (1/numeros[0])
-//         raiz = raiz + "i"
-//         salida(numeros, raiz, "√")
-//     }else{
-//         console.log("real")
-//         let raiz = numeros[1] ** (1/numeros[0])
-//         salida(numeros, raiz, "√")
-//     }
-//     return
-// }
-
 const radicar = function(){
     let raiz
     let numeros = entrada(["Ingrese el índice", "Ingrese el radicando"])
