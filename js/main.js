@@ -13,20 +13,15 @@ function verificarEntrada(frase){
     numero = (prompt(frase))
     do{
         if (!numero){
-            console.log("botón cancelar de Verificar Entrada")
             return false
         }
-        console.log("primer número ingresado en Verificar Entrada: "+numero)
         numero = parseInt(numero)
         if ((numero ?? false) || (numero == 0)){
-            console.log("número válido en Verificar Entrada: "+numero)
             numeroValido = true
         }else{
-            console.log("número inválido en Verificar Entrada: "+numero)
             numero = (prompt("Valor inválido. \nPor favor " + frase))
             numeroValido = false
         }
-        console.log("salida de Verificar Entrada: "+numeroValido)
     }while (!(numeroValido))
     return numero
 }
@@ -34,12 +29,10 @@ function verificarEntrada(frase){
 function entrada(mensajes){
     let numero1 = verificarEntrada(mensajes[0])
     if (numero1 === false){
-        console.log("cadena del botón cancelar")
         return false
     }
     let numero2 = verificarEntrada(mensajes[1])
     if (numero2 === false){
-        console.log("cadena del botón cancelar")
         return false
     }
     let numeros = [numero1, numero2]
@@ -48,7 +41,6 @@ function entrada(mensajes){
 
 const sumar = function(){
     let sumandos = entrada(["Ingrese el primer sumando", "Ingrese el segundo sumando"])
-    console.log("numeros en sumar: "+sumandos)
     if (sumandos === false){
         cancelado()
         return
@@ -60,7 +52,6 @@ const sumar = function(){
 
 const restar = function(){
     let restandos = entrada(["Ingrese el minuendo", "Ingrese el sustraendo"])
-    console.log("numeros en restar: "+restandos)
     if (restandos === false){
         cancelado()
         return
@@ -72,7 +63,6 @@ const restar = function(){
 
 const multiplicar = function(){
     let factores = entrada(["Ingrese el primer factor", "Ingrese el segundo factor"])
-    console.log("numeros en multiplicar: "+factores)
     if (factores === false){
         cancelado()
         return
@@ -84,7 +74,6 @@ const multiplicar = function(){
 
 const elevar = function(){
     let potenciales = entrada(["Ingrese la base", "Ingrese el exponente"])
-    console.log("numeros en elevar: "+potenciales)
     if (potenciales === false){
         cancelado()
         return
@@ -97,7 +86,6 @@ const elevar = function(){
 
 const dividir = function(){
     let numeros = entrada(["Ingrese el numerador", "Ingrese el denominador"])
-    console.log("numeros en dividir: "+numeros)
     if (numeros === false){
         cancelado()
         return
@@ -112,36 +100,27 @@ const dividir = function(){
 }
 
 const radicar = function(){
-    let raiz
     let numeros = entrada(["Ingrese el índice", "Ingrese el radicando"])
     if (numeros === false){
         cancelado()
         return
     }
-    console.log("radicales: "+numeros)
-    console.log("paridad del índice: "+esPar(numeros[0]))
-    console.log("negatividad del radicando: "+esNegativo(numeros[1]))
+
     switch (true){
         case numeros[0] == 0:
-            console.log("caso índice 0")
             cancelado("El índice de la raiz no puede ser 0")
             break
 
         case esNegativo(numeros[0]):
-            console.log("caso índice negativo")
             cancelado("No se puede resolver una raíz con índice negativo")
             break
 
         case esNegativo(numeros[1]) && esPar(numeros[0]):
-            console.log("caso números imaginarios")
-            raiz = ((-1 * numeros[1]) ** (1/numeros[0])) + "i"
-            salida(numeros, raiz, "√")
+            salida(numeros, ((-1 * numeros[1]) ** (1/numeros[0])) + "i", "√")
             break
 
         default:
-            console.log("caso números reales")
-            raiz = numeros[1] ** (1/numeros[0])
-            salida(numeros, raiz, "√")
+            salida(numeros, numeros[1] ** (1/numeros[0]), "√")
             break
     }
     return
@@ -152,11 +131,9 @@ do{
     entradaMenu = prompt("Ingrese un número para seleccionar la operación: \n1: Sumar \n2: Restar \n3: Multiplicar \n4: Dividir \n5: Potencia \n6: Raiz \n9: Salir")
     menu = parseInt(entradaMenu)
     if (!entradaMenu){
-        console.log("botón cancelar del menú")
         menu = 9
     }
-    console.log("comando menú: "+entradaMenu)
-    console.log("comando menú parseado: "+menu)
+    
     switch (menu){
         case 1:
             sumar()
@@ -185,6 +162,5 @@ do{
                 menu = 0
             }
     }
-    console.log("bucle del menú \n ")
 } while (menu !== 9)
 console.log("Programa finalizado")
