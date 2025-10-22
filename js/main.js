@@ -1,11 +1,24 @@
 //variables globales
 let entradaMenu = ""
 let menu = 0
+let historial = []
 
-const salida = (valores, resultado, operacion) => alert(valores[0] + operacion + valores[1] + " = " + resultado)
+
 const cancelado = (error = "Operación cancelada") => alert(error)
 const esPar = (numero) => (numero % 2) == 0
 const esNegativo = (numero) => numero < 0
+
+const salida = (valores, resultado, operacion) => {
+    let calculo = valores[0] + operacion + valores[1] + " = " + resultado
+    alert(calculo)
+    console.log(historial.length)
+    historial.unshift(calculo)
+    console.log(historial.length)
+    if (historial.length > 5){
+        console.log("pop")
+        historial.pop()
+    }
+}
 
 function verificarEntrada(frase){
     let numeroValido
@@ -130,9 +143,28 @@ const radicar = function(){
     return
 }
 
+function verHistorial(){
+    let i = 0
+    let cadena = ""
+    for (const operaciones of historial){
+        i += 1
+        cadena = cadena + "\n" + i + ": " + operaciones
+    }
+    switch (i){
+        case 0:
+            alert("No se realizaron operaciones")
+            break
+        case 1:
+            alert("Historial de la última operación:" + cadena)
+            break
+        default:
+            alert("Historial de las últimas " + i + " operaciones desde la más actual:" + cadena)
+    }
+}
+
 
 do{
-    entradaMenu = prompt("Ingrese un número para seleccionar la operación: \n1: Sumar \n2: Restar \n3: Multiplicar \n4: Dividir \n5: Potencia \n6: Raiz \n9: Salir")
+    entradaMenu = prompt("Ingrese un número para seleccionar la operación: \n1: Sumar \n2: Restar \n3: Multiplicar \n4: Dividir \n5: Potencia \n6: Raiz \n8: Historial \n9: Salir")
     menu = parseInt(entradaMenu)
     if (!entradaMenu){
         menu = 9
@@ -156,7 +188,10 @@ do{
             break
         case 6:
             radicar()
-            break  
+            break
+        case 8:
+            verHistorial()
+            break
         case 9:
             break
         default:
