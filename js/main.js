@@ -94,8 +94,8 @@ const dividir = function(){
         cancelado("No se puede dividir por 0")
         return
     }
-    let cociente = numeros[0] / numeros[1]
-    salida(numeros, cociente, " / ")
+    let cociente = parseInt((numeros[0] / numeros[1]) * 100)
+    salida(numeros, cociente/100, " / ")
     return
 }
 
