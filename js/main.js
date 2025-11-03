@@ -11,11 +11,8 @@ const esNegativo = (numero) => numero < 0
 const salida = (valores, resultado, operacion) => {
     let calculo = valores[0] + operacion + valores[1] + " = " + resultado
     alert(calculo)
-    console.log(historial.length)
     historial.unshift(calculo)
-    console.log(historial.length)
     if (historial.length > 5){
-        console.log("pop")
         historial.pop()
     }
 }
